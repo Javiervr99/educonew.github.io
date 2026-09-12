@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Aprende Fácil - Recursos educativos</title>
+
+    <meta name="description"
+          content="Recursos educativos gratuitos para aprender y practicar.">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="hero">
+
+    <div class="contenedor">
+
+        <h1>🎓 Aprende Fácil</h1>
+
+        <p class="subtitulo">
+            Aprende, practica y mejora tus conocimientos.
+        </p>
+
+        <p>
+            Ejercicios gratuitos de matemáticas
+            para aprender jugando.
+        </p>
+
+        <a href="#matematicas" class="boton-principal">
+            🚀 Empezar a aprender
+        </a>
+
+    </div>
+
+</header>
+
+
+    <nav>
+
+        <div class="contenedor">
+
+            <a href="#inicio">Inicio</a>
+            <a href="#matematicas">Matemáticas</a>
+            <a href="#lengua">Lengua</a>
+            <a href="#quiz">Quiz</a>
+            <a href="#articulos">Artículos</a>
+        </div>
+
+    </nav>
+
+
+    <main class="contenedor">
+
+        <section id="inicio" class="hero">
+
+            <h2>Aprender puede ser divertido 🚀</h2>
+
+            <p>
+                Encuentra ejercicios, explicaciones y
+                herramientas gratuitas para practicar.
+            </p>
+
+        </section>
+
+
+        <section id="matematicas">
+
+            <h2>📐 Matemáticas</h2>
+
+            <div class="tarjeta">
+
+    <h3>➕ Sumas</h3>
+
+    <p>
+        Practica operaciones de suma.
+    </p>
+<div class="niveles">
+
+    <button onclick="empezarSumas('facil')">
+        🟢 Fácil
+    </button>
+
+    <button onclick="empezarSumas('medio')">
+        🟡 Medio
+    </button>
+
+    <button onclick="empezarSumas('dificil')">
+        🔴 Difícil
+    </button>
+
+</div>
+    <button onclick="empezarSumas()">
+        Practicar
+    </button>
+
+    <div id="sumasQuiz" class="oculto">
+
+        <h3 id="preguntaSuma"></h3>
+
+        <div id="respuestasSuma"></div>
+
+        <p id="resultadoSuma"></p>
+
+    </div>
+
+<div class="tarjeta">
+
+    <h3>➖ Restas</h3>
+
+    <p>
+        Practica operaciones de resta.
+    </p>
+
+    <div class="niveles">
+
+        <button onclick="empezarRestas('facil')">
+            🟢 Fácil
+        </button>
+
+        <button onclick="empezarRestas('medio')">
+            🟡 Medio
+        </button>
+
+        <button onclick="empezarRestas('dificil')">
+            🔴 Difícil
+        </button>
+
+    </div>
+
+    <div id="restasQuiz" class="oculto">
+
+        <h3 id="preguntaResta"></h3>
+
+        <div id="respuestasResta"></div>
+
+        <p id="resultadoResta"></p>
+
+    </div>
+
+</div>
+<div class="tarjeta">
+
+    <h3>✖️ Multiplicaciones</h3>
+
+    <p>
+        Practica las tablas de multiplicar.
+    </p>
+
+    <div class="niveles">
+
+        <button onclick="empezarMultiplicaciones('facil')">
+            🟢 Fácil
+        </button>
+
+        <button onclick="empezarMultiplicaciones('medio')">
+            🟡 Medio
+        </button>
+
+        <button onclick="empezarMultiplicaciones('dificil')">
+            🔴 Difícil
+        </button>
+
+    </div>
+
+    <div id="multiplicacionesQuiz" class="oculto">
+
+        <h3 id="preguntaMultiplicacion"></h3>
+
+        <div id="respuestasMultiplicacion"></div>
+
+        <p id="resultadoMultiplicacion"></p>
+
+    </div>
+
+</div>        </section>
+
+
+        <section id="lengua">
+
+            <h2>📚 Lengua</h2>
+
+            <div class="tarjetas">
+
+                <article class="tarjeta">
+
+                    <h3>✏️ Ortografía</h3>
+
+                    <p>
+                        Practica palabras y reglas ortográficas.
+                    </p>
+
+                    <button onclick="mostrarMensaje('ortografia')">
+                        Practicar
+                    </button>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <section id="quiz" class="quiz">
+
+            <h2>🧠 Quiz de matemáticas</h2>
+
+            <p id="pregunta">
+                Pulsa el botón para comenzar.
+            </p>
+
+            <div id="respuestas"></div>
+
+            <button onclick="empezarQuiz()">
+                Empezar quiz
+            </button>
+
+            <p id="resultado"></p>
+
+        </section>
+<section id="articulos">
+
+    <h2>📖 Artículos educativos</h2>
+
+    <p>
+        Aprende conceptos de forma sencilla con nuestras guías.
+    </p>
+
+    <div class="tarjetas">
+
+        <div class="tarjeta">
+
+            <h3>🧮 Cómo aprender las tablas de multiplicar</h3>
+
+            <p>
+                Descubre algunos trucos sencillos para aprender
+                las tablas de multiplicar y recordarlas mejor.
+            </p>
+
+           <a href="tablas-multiplicar.html" class="enlace-articulo">
+    Leer artículo →
+</a>
+
+        </div>
+
+
+        <div class="tarjeta">
+
+            <h3>➕ Cómo mejorar en matemáticas</h3>
+
+            <p>
+                Consejos prácticos para mejorar tus habilidades
+                matemáticas mediante la práctica.
+            </p>
+
+            <a href="mejorar-matematicas.html" class="enlace-articulo">
+                Leer artículo →
+            </a>
+
+        </div>
+
+
+        <div class="tarjeta">
+
+            <h3>🧠 Cómo estudiar mejor</h3>
+
+            <p>
+                Algunas técnicas sencillas para organizar
+                tus sesiones de estudio.
+            </p>
+
+            <a href="#" class="enlace-articulo">
+                Leer artículo →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            Aprende Fácil · Recursos educativos gratuitos
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

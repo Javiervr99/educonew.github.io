@@ -1,0 +1,201 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #222;
+}
+
+.contenedor {
+    width: min(1100px, 90%);
+    margin: auto;
+}
+
+
+/* CABECERA */
+
+header {
+    background: white;
+    text-align: center;
+    padding: 50px 20px 35px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 42px;
+}
+
+header p {
+    font-size: 18px;
+    color: #666;
+}
+/* BOTÓN PRINCIPAL */
+
+.boton-principal {
+    display: inline-block;
+    background: #4f46e5;
+    color: white;
+    text-decoration: none;
+    padding: 14px 25px;
+    border-radius: 10px;
+    font-weight: bold;
+    margin-top: 15px;
+    transition: 0.2s;
+}
+
+.boton-principal:hover {
+    background: #3730a3;
+    transform: translateY(-2px);
+}
+
+.subtitulo {
+    font-size: 22px;
+    color: #4f46e5;
+    font-weight: bold;
+}
+
+/* MENÚ */
+
+nav {
+    background: #222;
+    padding: 15px;
+}
+
+nav .contenedor {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+/* CONTENIDO PRINCIPAL */
+
+main {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+section {
+    margin-bottom: 60px;
+}
+
+.hero {
+    background: white;
+    padding: 60px 30px;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.hero h2 {
+    font-size: 32px;
+}
+
+
+/* TARJETAS */
+
+.tarjetas {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 20px;
+}
+
+.tarjeta {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.tarjeta h3 {
+    margin-top: 0;
+}
+
+
+/* BOTONES */
+
+button {
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+
+/* QUIZ */
+
+.quiz {
+    background: white;
+    padding: 35px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+#respuestas {
+    display: grid;
+    gap: 10px;
+    max-width: 500px;
+    margin: 25px auto;
+}
+
+.respuesta {
+    border: 1px solid #ccc;
+    background: white;
+}
+
+.correcta {
+    border: 2px solid #333;
+}
+
+.incorrecta {
+    border: 2px solid #999;
+}
+
+
+/* PIE DE PÁGINA */
+
+footer {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+
+/* MÓVILES */
+
+@media (max-width: 600px) {
+
+    header h1 {
+        font-size: 32px;
+    }
+
+    .hero h2 {
+        font-size: 25px;
+    }
+
+    nav .contenedor {
+        gap: 15px;
+    }
+}
