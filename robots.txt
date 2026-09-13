@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://javiervr99.github.io/educonew.github.io/sitemap.xml
