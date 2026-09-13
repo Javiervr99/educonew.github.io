@@ -538,13 +538,14 @@ function comprobarOrtografia(indice) {
     ) {
         mostrarPreguntaOrtografia();
     } else {
-        alert(
-            "🏆 ¡Has terminado!\n\n" +
-            "Has conseguido " +
-            puntosOrtografia +
-            " de " +
-            preguntasOrtografia.length
-        );
+       mostrarResultadoOrtografia(
+    "🏆 ¡Has terminado! Has conseguido " +
+    puntosOrtografia +
+    " de " +
+    preguntasOrtografia.length +
+    " ⭐",
+    puntosOrtografia === preguntasOrtografia.length
+);
     }
 }
 function mostrarResultadoOrtografia(mensaje, correcto) {
