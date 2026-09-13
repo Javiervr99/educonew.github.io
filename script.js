@@ -471,6 +471,23 @@ function mostrarMensaje(tipo) {
     preguntaOrtografiaActual = 0;
     puntosOrtografia = 0;
 
+    const seccionLengua =
+        document.getElementById("lengua");
+
+    const ejerciciosAnteriores =
+        seccionLengua.querySelectorAll(".ejercicio-ortografia");
+
+    ejerciciosAnteriores.forEach(ejercicio => {
+        ejercicio.remove();
+    });
+
+    const resultadosAnteriores =
+        seccionLengua.querySelectorAll(".resultado-ortografia");
+
+    resultadosAnteriores.forEach(resultado => {
+        resultado.remove();
+    });
+
     mostrarPreguntaOrtografia();
 }
 
