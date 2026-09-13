@@ -576,8 +576,8 @@ function comprobarOrtografia(indice) {
         }
 
     }, 3000);
-}
-}
+ }
+
 function mostrarResultadoOrtografia(mensaje, correcto) {
 
     const ejercicioActual =
