@@ -535,33 +535,48 @@ function comprobarOrtografia(indice) {
         preguntasOrtografia[preguntaOrtografiaActual];
 
     if (indice === ejercicio.correcta) {
-    puntosOrtografia++;
-    mostrarResultadoOrtografia("¡Correcto! 🎉", true);
-} else {
-    mostrarResultadoOrtografia(
-        "❌ Incorrecto. La respuesta correcta era: " +
-        ejercicio.opciones[ejercicio.correcta],
-        false
-    );
-}
+
+        puntosOrtografia++;
+
+        mostrarResultadoOrtografia(
+            "¡Correcto! 🎉",
+            true
+        );
+
+    } else {
+
+        mostrarResultadoOrtografia(
+            "❌ Incorrecto. La respuesta correcta era: " +
+            ejercicio.opciones[ejercicio.correcta],
+            false
+        );
+    }
 
     preguntaOrtografiaActual++;
 
-    if (
-        preguntaOrtografiaActual <
-        preguntasOrtografia.length
-    ) {
-        mostrarPreguntaOrtografia();
-    } else {
-       mostrarResultadoOrtografia(
-    "🏆 ¡Has terminado! Has conseguido " +
-    puntosOrtografia +
-    " de " +
-    preguntasOrtografia.length +
-    " ⭐",
-    puntosOrtografia === preguntasOrtografia.length
-);
-    }
+    setTimeout(function() {
+
+        if (
+            preguntaOrtografiaActual <
+            preguntasOrtografia.length
+        ) {
+
+            mostrarPreguntaOrtografia();
+
+        } else {
+
+            mostrarResultadoOrtografia(
+                "🏆 ¡Has terminado! Has conseguido " +
+                puntosOrtografia +
+                " de " +
+                preguntasOrtografia.length +
+                " ⭐",
+                puntosOrtografia === preguntasOrtografia.length
+            );
+        }
+
+    }, 1500);
+}
 }
 function mostrarResultadoOrtografia(mensaje, correcto) {
 
