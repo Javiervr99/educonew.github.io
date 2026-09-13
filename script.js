@@ -575,7 +575,7 @@ function comprobarOrtografia(indice) {
             );
         }
 
-    }, 1500);
+    }, 3000);
 }
 }
 function mostrarResultadoOrtografia(mensaje, correcto) {
