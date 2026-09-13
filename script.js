@@ -603,8 +603,5 @@ function mostrarResultadoOrtografia(mensaje, correcto) {
 
     ejercicioActual.appendChild(resultado);
 }
-    const seccionLengua =
-        document.getElementById("lengua");
-
-    seccionLengua.appendChild(resultado);
+   
 }
