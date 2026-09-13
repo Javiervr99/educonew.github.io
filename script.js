@@ -520,14 +520,15 @@ function comprobarOrtografia(indice) {
         preguntasOrtografia[preguntaOrtografiaActual];
 
     if (indice === ejercicio.correcta) {
-        puntosOrtografia++;
-        alert("¡Correcto! 🎉");
-    } else {
-        alert(
-            "❌ Incorrecto. La respuesta correcta era: " +
-            ejercicio.opciones[ejercicio.correcta]
-        );
-    }
+    puntosOrtografia++;
+    mostrarResultadoOrtografia("¡Correcto! 🎉", true);
+} else {
+    mostrarResultadoOrtografia(
+        "❌ Incorrecto. La respuesta correcta era: " +
+        ejercicio.opciones[ejercicio.correcta],
+        false
+    );
+}
 
     preguntaOrtografiaActual++;
 
@@ -545,4 +546,24 @@ function comprobarOrtografia(indice) {
             preguntasOrtografia.length
         );
     }
+}
+function mostrarResultadoOrtografia(mensaje, correcto) {
+
+    const resultado = document.createElement("p");
+
+    resultado.textContent = mensaje;
+
+    resultado.style.fontWeight = "bold";
+    resultado.style.marginTop = "15px";
+
+    if (correcto) {
+        resultado.style.color = "green";
+    } else {
+        resultado.style.color = "red";
+    }
+
+    const seccionLengua =
+        document.getElementById("lengua");
+
+    seccionLengua.appendChild(resultado);
 }
