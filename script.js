@@ -565,12 +565,20 @@ function comprobarOrtografia(indice) {
 }
 function mostrarResultadoOrtografia(mensaje, correcto) {
 
-    const resultado = document.createElement("p");
+    const ejercicioActual =
+        document.querySelector(".ejercicio-ortografia");
+
+    if (!ejercicioActual) {
+        return;
+    }
+
+    const resultado =
+        document.createElement("p");
 
     resultado.textContent = mensaje;
 
-    resultado.style.fontWeight = "bold";
-    resultado.style.marginTop = "15px";
+    resultado.className =
+        "resultado-ortografia";
 
     if (correcto) {
         resultado.style.color = "green";
@@ -578,6 +586,8 @@ function mostrarResultadoOrtografia(mensaje, correcto) {
         resultado.style.color = "red";
     }
 
+    ejercicioActual.appendChild(resultado);
+}
     const seccionLengua =
         document.getElementById("lengua");
 
