@@ -194,6 +194,61 @@ footer {
     .hero h2 {
         font-size: 25px;
     }
+    /* ============================================
+   ORTOGRAFÍA
+   ============================================ */
+
+#lengua .tarjeta {
+    text-align: center;
+}
+
+#lengua .niveles {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+#lengua .niveles button {
+    min-width: 110px;
+}
+
+#lengua .ejercicio-ortografia {
+    margin-top: 25px;
+    padding: 25px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+#lengua .ejercicio-ortografia h3 {
+    margin-top: 0;
+}
+
+#lengua .opciones-ortografia {
+    display: grid;
+    gap: 12px;
+    max-width: 450px;
+    margin: 20px auto;
+}
+
+#lengua .opciones-ortografia button {
+    background: #f5f7fb;
+    border: 2px solid #ddd;
+    transition: 0.2s;
+}
+
+#lengua .opciones-ortografia button:hover {
+    transform: translateY(-2px);
+}
+
+#lengua .resultado-ortografia {
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 20px;
+}
 
     nav .contenedor {
         gap: 15px;
