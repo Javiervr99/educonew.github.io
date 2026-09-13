@@ -431,6 +431,10 @@ function terminarPartida() {
 // ORTOGRAFÍA
 // ============================================
 
+// ============================================
+// ORTOGRAFÍA
+// ============================================
+
 const preguntasOrtografia = [
     {
         pregunta: "¿Cuál está escrita correctamente?",
@@ -456,11 +460,41 @@ const preguntasOrtografia = [
         pregunta: "¿Cuál está escrita correctamente?",
         opciones: ["Avión", "Abión", "Havión", "Avíon"],
         correcta: 0
+    },
+    {
+        pregunta: "¿Cuál está escrita correctamente?",
+        opciones: ["Zapato", "Sapato", "Zappato", "Sapatto"],
+        correcta: 0
+    },
+    {
+        pregunta: "¿Cuál está escrita correctamente?",
+        opciones: ["Coche", "Koche", "Coxe", "Cochee"],
+        correcta: 0
+    },
+    {
+        pregunta: "¿Cuál está escrita correctamente?",
+        opciones: ["Guitarra", "Gitarra", "Guitara", "Gitarraa"],
+        correcta: 0
+    },
+    {
+        pregunta: "¿Cuál está escrita correctamente?",
+        opciones: ["Biblioteca", "Bivlioteca", "Bibblioteca", "Biblioteka"],
+        correcta: 0
+    },
+    {
+        pregunta: "¿Cuál está escrita correctamente?",
+        opciones: ["Mariposa", "Maripoza", "Maripoza", "Maripossa"],
+        correcta: 0
     }
 ];
 
+let preguntasOrtografiaPartida = [];
 let preguntaOrtografiaActual = 0;
 let puntosOrtografia = 0;
+
+function mezclarOrtografia(array) {
+    return [...array].sort(() => Math.random() - 0.5);
+}
 
 function mostrarMensaje(tipo) {
 
@@ -468,43 +502,42 @@ function mostrarMensaje(tipo) {
         return;
     }
 
+    preguntasOrtografiaPartida =
+        mezclarOrtografia(preguntasOrtografia).slice(0, 5);
+
     preguntaOrtografiaActual = 0;
     puntosOrtografia = 0;
-
-    const seccionLengua =
-        document.getElementById("lengua");
-
-    const ejerciciosAnteriores =
-        seccionLengua.querySelectorAll(".ejercicio-ortografia");
-
-    ejerciciosAnteriores.forEach(ejercicio => {
-        ejercicio.remove();
-    });
-
-    const resultadosAnteriores =
-        seccionLengua.querySelectorAll(".resultado-ortografia");
-
-    resultadosAnteriores.forEach(resultado => {
-        resultado.remove();
-    });
 
     mostrarPreguntaOrtografia();
 }
 
 function mostrarPreguntaOrtografia() {
 
+    const seccionLengua =
+        document.getElementById("lengua");
+
     const ejercicio =
-        preguntasOrtografia[preguntaOrtografiaActual];
+        preguntasOrtografiaPartida[preguntaOrtografiaActual];
 
-    const opciones = ejercicio.opciones
-        .map((opcion, indice) =>
-            `<button onclick="comprobarOrtografia(${indice})">
-                ${opcion}
-            </button>`
-        )
-        .join("");
+    const opciones =
+        mezclarOrtografia(
+            ejercicio.opciones.map((opcion, indice) => ({
+                texto: opcion,
+                indice: indice
+            }))
+        );
 
-    const mensaje = `
+    const botones =
+        opciones.map(opcion => `
+            <button
+                onclick="comprobarOrtografia(${opcion.indice})"
+                class="respuesta"
+            >
+                ${opcion.texto}
+            </button>
+        `).join("");
+
+    seccionLengua.innerHTML = `
         <div class="ejercicio-ortografia">
 
             <h3>✏️ Ejercicio de ortografía</h3>
@@ -512,96 +545,115 @@ function mostrarPreguntaOrtografia() {
             <p>${ejercicio.pregunta}</p>
 
             <div class="opciones-ortografia">
-                ${opciones}
+                ${botones}
             </div>
 
             <p>
                 Pregunta ${preguntaOrtografiaActual + 1}
-                de ${preguntasOrtografia.length}
+                de ${preguntasOrtografiaPartida.length}
                 · ⭐ ${puntosOrtografia}
             </p>
 
         </div>
     `;
-
-    const seccionLengua =
-        document.getElementById("lengua");
-
-   seccionLengua.innerHTML = mensaje;
 }
+
 function comprobarOrtografia(indice) {
 
     const ejercicio =
-        preguntasOrtografia[preguntaOrtografiaActual];
+        preguntasOrtografiaPartida[preguntaOrtografiaActual];
+
+    const botones =
+        document.querySelectorAll(
+            ".opciones-ortografia button"
+        );
+
+    botones.forEach(boton => {
+        boton.disabled = true;
+    });
+
+    const ejercicioActual =
+        document.querySelector(".ejercicio-ortografia");
+
+    const resultado =
+        document.createElement("p");
+
+    resultado.className =
+        "resultado-ortografia";
 
     if (indice === ejercicio.correcta) {
 
         puntosOrtografia++;
 
-        mostrarResultadoOrtografia(
-            "¡Correcto! 🎉",
-            true
-        );
+        resultado.textContent =
+            "¡Correcto! 🎉";
+
+        resultado.style.color = "green";
 
     } else {
 
-        mostrarResultadoOrtografia(
+        resultado.textContent =
             "❌ Incorrecto. La respuesta correcta era: " +
-            ejercicio.opciones[ejercicio.correcta],
-            false
-        );
+            ejercicio.opciones[ejercicio.correcta];
+
+        resultado.style.color = "red";
     }
 
-    preguntaOrtografiaActual++;
+    ejercicioActual.appendChild(resultado);
 
-    setTimeout(function() {
+    setTimeout(() => {
+
+        preguntaOrtografiaActual++;
 
         if (
             preguntaOrtografiaActual <
-            preguntasOrtografia.length
+            preguntasOrtografiaPartida.length
         ) {
 
             mostrarPreguntaOrtografia();
 
         } else {
 
-            mostrarResultadoOrtografia(
-                "🏆 ¡Has terminado! Has conseguido " +
-                puntosOrtografia +
-                " de " +
-                preguntasOrtografia.length +
-                " ⭐",
-                puntosOrtografia === preguntasOrtografia.length
-            );
+            terminarOrtografia();
         }
 
-    }, 3000);
- }
-
-function mostrarResultadoOrtografia(mensaje, correcto) {
-
-    const ejercicioActual =
-        document.querySelector(".ejercicio-ortografia");
-
-    if (!ejercicioActual) {
-        return;
-    }
-
-    const resultado =
-        document.createElement("p");
-
-    resultado.textContent = mensaje;
-
-    resultado.className =
-        "resultado-ortografia";
-
-    if (correcto) {
-        resultado.style.color = "green";
-    } else {
-        resultado.style.color = "red";
-    }
-
-    ejercicioActual.appendChild(resultado);
+    }, 1500);
 }
-   
 
+function terminarOrtografia() {
+
+    const seccionLengua =
+        document.getElementById("lengua");
+
+    const porcentaje =
+        Math.round(
+            (puntosOrtografia /
+                preguntasOrtografiaPartida.length) * 100
+        );
+
+    seccionLengua.innerHTML = `
+        <div class="ejercicio-ortografia">
+
+            <h3>🏆 ¡Has terminado!</h3>
+
+            <p>
+                Has conseguido
+                <strong>
+                    ${puntosOrtografia}
+                    de
+                    ${preguntasOrtografiaPartida.length}
+                </strong>
+                respuestas correctas.
+            </p>
+
+            <p>
+                ⭐ ${porcentaje}%
+            </p>
+
+            <button onclick="mostrarMensaje('ortografia')">
+                🔄 Jugar otra vez
+            </button>
+
+        </div>
+    `;
+}
