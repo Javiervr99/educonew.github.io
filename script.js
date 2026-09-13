@@ -527,10 +527,7 @@ function mostrarPreguntaOrtografia() {
     const seccionLengua =
         document.getElementById("lengua");
 
-    seccionLengua.insertAdjacentHTML(
-        "beforeend",
-        mensaje
-    );
+   seccionLengua.innerHTML = mensaje;
 }
 function comprobarOrtografia(indice) {
 
