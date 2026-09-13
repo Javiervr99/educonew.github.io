@@ -488,12 +488,13 @@ function mostrarPreguntaOrtografia() {
         .join("");
 
     const mensaje = `
-        <div class="tarjeta">
+        <div class="ejercicio-ortografia">
+
             <h3>✏️ Ejercicio de ortografía</h3>
 
             <p>${ejercicio.pregunta}</p>
 
-            <div class="niveles">
+            <div class="opciones-ortografia">
                 ${opciones}
             </div>
 
@@ -502,6 +503,7 @@ function mostrarPreguntaOrtografia() {
                 de ${preguntasOrtografia.length}
                 · ⭐ ${puntosOrtografia}
             </p>
+
         </div>
     `;
 
@@ -513,7 +515,6 @@ function mostrarPreguntaOrtografia() {
         mensaje
     );
 }
-
 function comprobarOrtografia(indice) {
 
     const ejercicio =
