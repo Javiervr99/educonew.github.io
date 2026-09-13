@@ -427,3 +427,122 @@ function terminarPartida() {
     resultadoElemento.textContent =
         `Has conseguido ${puntos} de ${preguntas.length} · ${porcentaje}%`;
 }
+// ============================================
+// ORTOGRAFÍA
+// ============================================
+
+const preguntasOrtografia = [
+    {
+        pregunta: "¿Cuál está escrita correctamente?",
+        opciones: ["Haver", "Haber", "Aver", "Havir"],
+        correcta: 1
+    },
+    {
+        pregunta: "¿Cuál está escrita correctamente?",
+        opciones: ["Baca", "Vaca", "Vakka", "Baka"],
+        correcta: 1
+    },
+    {
+        pregunta: "¿Cuál está escrita correctamente?",
+        opciones: ["Jirafa", "Girafa", "Jirrafa", "Giraffa"],
+        correcta: 0
+    },
+    {
+        pregunta: "¿Cuál está escrita correctamente?",
+        opciones: ["Huevo", "Uevo", "Hebo", "Huebo"],
+        correcta: 0
+    },
+    {
+        pregunta: "¿Cuál está escrita correctamente?",
+        opciones: ["Avión", "Abión", "Havión", "Avíon"],
+        correcta: 0
+    }
+];
+
+let preguntaOrtografiaActual = 0;
+let puntosOrtografia = 0;
+
+function mostrarMensaje(tipo) {
+
+    if (tipo !== "ortografia") {
+        return;
+    }
+
+    preguntaOrtografiaActual = 0;
+    puntosOrtografia = 0;
+
+    mostrarPreguntaOrtografia();
+}
+
+function mostrarPreguntaOrtografia() {
+
+    const ejercicio =
+        preguntasOrtografia[preguntaOrtografiaActual];
+
+    const opciones = ejercicio.opciones
+        .map((opcion, indice) =>
+            `<button onclick="comprobarOrtografia(${indice})">
+                ${opcion}
+            </button>`
+        )
+        .join("");
+
+    const mensaje = `
+        <div class="tarjeta">
+            <h3>✏️ Ejercicio de ortografía</h3>
+
+            <p>${ejercicio.pregunta}</p>
+
+            <div class="niveles">
+                ${opciones}
+            </div>
+
+            <p>
+                Pregunta ${preguntaOrtografiaActual + 1}
+                de ${preguntasOrtografia.length}
+                · ⭐ ${puntosOrtografia}
+            </p>
+        </div>
+    `;
+
+    const seccionLengua =
+        document.getElementById("lengua");
+
+    seccionLengua.insertAdjacentHTML(
+        "beforeend",
+        mensaje
+    );
+}
+
+function comprobarOrtografia(indice) {
+
+    const ejercicio =
+        preguntasOrtografia[preguntaOrtografiaActual];
+
+    if (indice === ejercicio.correcta) {
+        puntosOrtografia++;
+        alert("¡Correcto! 🎉");
+    } else {
+        alert(
+            "❌ Incorrecto. La respuesta correcta era: " +
+            ejercicio.opciones[ejercicio.correcta]
+        );
+    }
+
+    preguntaOrtografiaActual++;
+
+    if (
+        preguntaOrtografiaActual <
+        preguntasOrtografia.length
+    ) {
+        mostrarPreguntaOrtografia();
+    } else {
+        alert(
+            "🏆 ¡Has terminado!\n\n" +
+            "Has conseguido " +
+            puntosOrtografia +
+            " de " +
+            preguntasOrtografia.length
+        );
+    }
+}
