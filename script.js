@@ -604,4 +604,4 @@ function mostrarResultadoOrtografia(mensaje, correcto) {
     ejercicioActual.appendChild(resultado);
 }
    
-}
+
